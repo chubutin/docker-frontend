@@ -1,0 +1,12 @@
+language: generic
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t chubutin/docker-frontend -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true chubutin/docker-frontend npm run test
+
+
